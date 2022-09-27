@@ -1,5 +1,6 @@
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
 import CourseList from './components/CourseList';
 
