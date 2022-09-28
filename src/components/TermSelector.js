@@ -1,7 +1,7 @@
 const terms = ['Fall', 'Winter', 'Spring']
 
 const TermSelector = ({term, setTerm}) => (
-    <div className="btn-group">
+    <div className="me-auto btn-group">
     { 
       terms.map(termName => <TermButton key={termName} termName={termName} term={term} setTerm={setTerm} />)
     }
@@ -17,6 +17,7 @@ const TermButton = ({termName, term, setTerm}) => (
       </label>
     </div>
   );
+
 
 
 
