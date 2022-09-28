@@ -2,6 +2,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
+import TermPage from './components/TermPage';
 import CourseList from './components/CourseList';
 import { useJsonQuery } from './utilities/fetch';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -22,7 +23,7 @@ const AppMain = () => {
 
   return <> 
     <Banner title={schedule.title}></Banner>
-    <CourseList courses={schedule.courses}></CourseList>
+    <TermPage courses={schedule.courses}></TermPage>
     </>;
 }
   
