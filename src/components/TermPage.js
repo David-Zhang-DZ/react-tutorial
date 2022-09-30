@@ -3,6 +3,7 @@ import TermSelector from './TermSelector';
 import CourseList from "./CourseList";
 import Modal from "./Modal";
 import Schedule from "./Schedule";
+import { hasConflict } from "../utilities/time";
 
 const TermPage = ({courses}) => {
     const [term, setTerm] = useState('Fall');
@@ -12,11 +13,16 @@ const TermPage = ({courses}) => {
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
 
-    const toggleSelected = (item) => setSelected(
-        selected.includes(item)
-        ? selected.filter(x => x !== item)
-        : [...selected, item]
-    );  
+    const toggleSelected = (item) => {
+        if(selected.includes(item) || !hasConflict(courses[item], Object.entries(courses)
+            .filter(([id, course]) => selected.includes(id))
+            .map(([id, course]) => course)))
+        setSelected(
+            selected.includes(item)
+            ? selected.filter(x => x !== item)
+            : [...selected, item]
+        )
+    };  
 
     return (
         <>
