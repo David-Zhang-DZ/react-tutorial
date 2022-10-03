@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../App.css";
 
 const Course = ({id, course, selected, toggleSelected}) => (
@@ -6,6 +7,7 @@ const Course = ({id, course, selected, toggleSelected}) => (
       <h5 className="card-title">{course.term} CS {course.number}</h5>
       <p className="card-text">{course.title}</p>
       <p className="card-text">{course.meets}</p>
+      <p><Link to={`/courses/${id}`}>Edit Course</Link></p>
     </div>
   </div>
 );

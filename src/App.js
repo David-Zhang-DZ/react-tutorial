@@ -4,8 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
 import TermPage from './components/TermPage';
 import CourseList from './components/CourseList';
+import FormPage from './components/FormPage';
 import { useJsonQuery } from './utilities/fetch';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const queryClient = new QueryClient();
 
@@ -23,7 +25,12 @@ const AppMain = () => {
 
   return <> 
     <Banner title={schedule.title}></Banner>
-    <TermPage courses={schedule.courses}></TermPage>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<TermPage courses={schedule.courses}></TermPage>}/>
+        <Route path='/courses/:id' element={<FormPage courses={schedule.courses}></FormPage>}></Route>
+      </Routes>
+    </BrowserRouter>
     </>;
 }
   
