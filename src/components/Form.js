@@ -10,6 +10,17 @@ const InputField = ({name, text, state, change}) => (
   </div>
 );
 
+const validateData = (key, val) => {
+  switch (key) {
+    case 'title':
+      return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
+    case 'meets':
+      return /^$|^ *((?:M|Tu|W|Th|F)+) +(\d\d?):(\d\d) *[ -] *(\d\d?):(\d\d) *$/.test(val) 
+        ? '' : 'must contain days and start-end, e.g., MWF 12:00-13:20';
+    default: return '';
+  }
+};
+
 const ButtonBar = ({message, disabled}) => {
     const navigate = useNavigate();
 
@@ -22,7 +33,7 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const Form = ({values}) => {
-  const [state, change] = useFormData(null, values);
+  const [state, change] = useFormData(validateData, values);
   const submit = (evt) => {
   };
 
