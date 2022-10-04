@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import Schedule from "./Schedule";
 import { hasConflict } from "../utilities/time";
 
-const TermPage = ({courses}) => {
+const TermPage = ({courses, profile}) => {
     const [term, setTerm] = useState('Fall');
     const [selected, setSelected] = useState([]);
     const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ const TermPage = ({courses}) => {
             <Modal open={open} close={closeModal}>
                 <Schedule courses={courses} selected={selected}/>
             </Modal>
-            <CourseList term={term} courses={courses} selected={selected} toggleSelected={toggleSelected}/>
+            <CourseList term={term} courses={courses} selected={selected} toggleSelected={toggleSelected} profile={profile}/>
         </>
     );
 }
