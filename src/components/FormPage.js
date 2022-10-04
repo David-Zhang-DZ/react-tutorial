@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const FormPage = ({courses}) => {
     const params = useParams();
 
-    return <Form values={courses[params.id]}></Form>;
+    return <Form values={courses[params.id]} id={params.id}></Form>;
 };
 
 export default FormPage;
