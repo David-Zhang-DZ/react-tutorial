@@ -3,9 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
 import TermPage from './components/TermPage';
-import CourseList from './components/CourseList';
 import FormPage from './components/FormPage';
-import { useJsonQuery } from './utilities/fetch';
+import { useDbData } from './utilities/firebase';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -18,9 +17,9 @@ const App = () => (
 )
 
 const AppMain = () => {
-  const [schedule, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
+  const [schedule, error] = useDbData('/data');
 
-  if(isLoading) return <h1>Loading Data</h1>;
+  if(schedule === undefined) return <h1>Loading Data</h1>;
   if(error) return <h1>Error Loading Data</h1>;
 
   return <> 
