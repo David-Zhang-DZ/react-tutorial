@@ -54,14 +54,14 @@ export const signInWithGoogle = () => {
   
   const firebaseSignOut = () => signOut(getAuth(firebase));
   
-  export { firebaseSignOut as signOut };
+export { firebaseSignOut as signOut };
   
-  export const useAuthState = () => {
-    const [user, setUser] = useState();
-    
-    useEffect(() => (
-      onAuthStateChanged(getAuth(firebase), setUser)
-    ));
+export const useAuthState = () => {
+  const [user, setUser] = useState();
   
-    return [user];
-  };
+  useEffect(() => (
+    onAuthStateChanged(getAuth(firebase), setUser)
+  ));
+
+  return [user];
+};
